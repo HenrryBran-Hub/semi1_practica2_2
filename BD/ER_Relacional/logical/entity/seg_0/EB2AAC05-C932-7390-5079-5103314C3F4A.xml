@@ -1,0 +1,85 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="EB2AAC05-C932-7390-5079-5103314C3F4A" name="Album">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:26:46 UTC</createdTime>
+<ownerDesignName>ER_Relacional</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Id" id="54F240A1-06F1-DE61-A523-B2B86296708D">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:26:56 UTC</createdTime>
+<ownerDesignName>ER_Relacional</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="9F2076C1-3E43-8D2E-134F-837404D02310">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:27:10 UTC</createdTime>
+<ownerDesignName>ER_Relacional</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>100 CHAR</dataTypeSize>
+<ownDataTypeParameters>100 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Estado" id="3B630F68-0BC5-1C01-CF31-3C792927531C">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:38:43 UTC</createdTime>
+<ownerDesignName>ER_Relacional</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Id1" id="9F5F5C78-5903-5A3B-8060-FBAAA040DD72">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:36:07 UTC</createdTime>
+<generatorID>C9C42107-ED7A-F8A1-4F5A-7FC99922F7EF</generatorID>
+<ownerDesignName>ER_Relacional</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<referedAttribute>A1E0BE49-70CC-9610-B121-16D8D1D11C64</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="DF6E0BB3-3CC6-AD6F-2A12-86E9415089E8" name="Album PK">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:27:07 UTC</createdTime>
+<ownerDesignName>ER_Relacional</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>54F240A1-06F1-DE61-A523-B2B86296708D</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>

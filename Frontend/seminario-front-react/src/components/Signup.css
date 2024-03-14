@@ -1,0 +1,21 @@
+.containerS {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.form-containerS {
+    max-width: 500px;
+}
+
+.image-containerS {
+    text-align: center;
+    margin-bottom: 20px; /* Cambié mb-3 por 20px para claridad */
+}
+
+.container-imgS{
+    width: 100%;
+    align-items: center;
+    align-items: center;
+}

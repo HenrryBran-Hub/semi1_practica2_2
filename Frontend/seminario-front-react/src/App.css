@@ -1,0 +1,11 @@
+body{
+  background: gray;
+}
+
+.photo-item {
+  display: inline-block; /* Cambia a 'block' si quieres que cada imagen ocupe todo el ancho disponible */
+  margin-right: 20px; /* Añade margen derecho para separar las imágenes */
+  margin-bottom: 20px; /* Añade margen inferior para separar las imágenes verticalmente */
+  width: 150px; /* Define el ancho deseado */
+  height: auto; /* Mantén la proporción de aspecto */
+}

@@ -1,0 +1,99 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Entity class="oracle.dbtools.crest.model.design.logical.Entity" directorySegmentName="seg_0" id="808C337B-830F-5CC5-296E-C62AC17CC77A" name="Foto">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:27:53 UTC</createdTime>
+<ownerDesignName>ER_Logico</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<adequatelyNormalized>NO</adequatelyNormalized>
+<expectedVolumes>0</expectedVolumes>
+<fwdEngineeringStrategyName>Single Table</fwdEngineeringStrategyName>
+<growthPercent>0</growthPercent>
+<growthType>Year</growthType>
+<maxVolumes>9999999</maxVolumes>
+<minVolumes>0</minVolumes>
+<normalForm>Third</normalForm>
+<attributes itemClass="oracle.dbtools.crest.model.design.logical.Attribute">
+<Attribute name="Id" id="F4ECF268-9B33-DE49-E877-4F8EAFD4539F">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:27:58 UTC</createdTime>
+<ownerDesignName>ER_Logico</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="nombre" id="EE567FD8-1612-D770-555E-9656453E2E6D">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:28:11 UTC</createdTime>
+<ownerDesignName>ER_Logico</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="url_foto" id="E14C6A8F-A32B-A072-A72A-3CE04F81B23A">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:28:45 UTC</createdTime>
+<ownerDesignName>ER_Logico</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT024</logicalDatatype>
+<dataTypeSize>255 CHAR</dataTypeSize>
+<ownDataTypeParameters>255 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Estado" id="6D0BDDE7-2897-8086-7768-D4852FF10498">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:39:24 UTC</createdTime>
+<ownerDesignName>ER_Logico</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT006</logicalDatatype>
+<dataTypeSize>1 CHAR</dataTypeSize>
+<ownDataTypeParameters>1 CHAR,,</ownDataTypeParameters>
+</Attribute>
+<Attribute name="Id1" id="3ADAF444-591A-1772-B41A-9D61DCC9567E">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:36:22 UTC</createdTime>
+<generatorID>3A68C6FA-20B2-29B0-6863-B7793BF0AC61</generatorID>
+<ownerDesignName>ER_Logico</ownerDesignName>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="true"/>
+</engineerTo>
+<referedAttribute>54F240A1-06F1-DE61-A523-B2B86296708D</referedAttribute>
+<useDomainConstraints>false</useDomainConstraints>
+<use>1</use>
+<logicalDatatype>LOGDT011</logicalDatatype>
+<ownDataTypeParameters>,,</ownDataTypeParameters>
+</Attribute>
+</attributes>
+<identifiers itemClass="oracle.dbtools.crest.model.design.logical.CandidateKey">
+<identifier id="687944FC-884A-F753-E379-BC7A8D509C7C" name="Foto PK">
+<createdBy>Henrr</createdBy>
+<createdTime>2024-02-20 04:28:09 UTC</createdTime>
+<ownerDesignName>ER_Logico</ownerDesignName>
+<shouldEngineer>false</shouldEngineer>
+<engineerTo>
+<item key="537448D4-D9ED-6F6A-9B35-C2F97B1306EC" value="false"/>
+</engineerTo>
+<pk>true</pk>
+<usedAttributes>
+<attributeRef>F4ECF268-9B33-DE49-E877-4F8EAFD4539F</attributeRef>
+</usedAttributes>
+</identifier>
+</identifiers>
+</Entity>
