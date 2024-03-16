@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import NavBar from './MyNavBar';
-import './Signup.css';
-import bcrypt from 'bcryptjs'; // Importa bcryptjs
+import '../styles/Signup.css';
+import md5 from 'md5';
 
 const Signup = () => {
     const [usuario, setUsuario] = useState('');
@@ -36,7 +36,7 @@ const Signup = () => {
             return;
         }
 
-        const hashedPassword = await bcrypt.hash(contrasena, 10);
+        const hashedPassword = md5(contrasena);
         const formData = new FormData();
         formData.append('nombre_usuario', usuario);
         formData.append('nombre_completo', nombreCompleto);
@@ -69,49 +69,56 @@ const Signup = () => {
     return (
         <div>
             <NavBar />
-            <div className="containerS">
-                <div className="image-containerS">
-                <form className="border p-3 rounded mr-3 form-containerS" onSubmit={handleSubmit}>
-                        <label htmlFor="imagen">Imagen</label>
-                        <input
-                            type="file"
-                            id="imagen"
-                            accept="image/*"
-                            onChange={handleImagenChange}
-                        />
-                        {imagen && (
-                            <img src={imagen} alt="Imagen seleccionada" className="container-imgS" />
-                        )}
-                        <div className='mb-3'>
-                            <label>Usuario</label>
-                        </div>
-                        <div className='mb-3'>
-                            <input type="text" name="Usuario" placeholder="Ingrese nombre de usuario" value={usuario} onChange={(e) => setUsuario(e.target.value)} />
-                        </div>
-                        <div className='mb-3'>
-                            <label>Nombre Completo</label>
-                        </div>
-                        <div className='mb-3'>
-                            <input type="text" name="NombreCompleto" placeholder="Ingrese su nombre completo" value={nombreCompleto} onChange={(e) => setNombreCompleto(e.target.value)} />
-                        </div>
-                        <div className='mb-3'>
-                            <label>Contraseña</label>
-                        </div>
-                        <div className='mb-3'>
-                            <input type="password" name="Contrasenia" placeholder="Ingrese su contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
-                        </div>
-                        <div className='mb-3'>
-                            <label>Confirmación</label>
-                        </div>
-                        <div className='mb-3'>
-                            <input type="password" name="Confirmacion" placeholder="Ingrese la confirmación de contraseña" value={confirmacion} onChange={(e) => setConfirmacion(e.target.value)} />
-                        </div>
-                        <div className='mb-3'>
-                            <button type="submit" className="btn btn-primary">
-                                Sign Up
-                            </button>
-                        </div>
-                    </form>
+            <div className='containerS' onSubmit={handleSubmit}>
+                <div  className='cuadrado'>
+                <div className='contorno'>
+                <div className='labelsignup'>
+                    <label htmlFor="imagen">Imagen</label>
+                    </div>
+                    <input
+                        type="file"
+                        id="imagen"
+                        accept="image/*"
+                        onChange={handleImagenChange}
+                        className='mb-3'
+                    />
+                    {imagen && (
+                        <img src={imagen} alt="Imagen seleccionada" className="container-imgS" />
+                    )}
+                    </div>
+                </div>
+                <div className='cuadrado'>
+                <div className='contorno'>
+                    <div className='mb-3'>
+                        <label className='labelsignup'>Usuario</label>
+                    </div>
+                    <div className='mb-3'>
+                        <input className='inputsignup' type="text" name="Usuario" placeholder="Ingrese nombre de usuario" value={usuario} onChange={(e) => setUsuario(e.target.value)} />
+                    </div>
+                    <div className='mb-3'>
+                        <label className='labelsignup'>Nombre Completo</label>
+                    </div>
+                    <div className='mb-3'>
+                        <input className='inputsignup' type="text" name="NombreCompleto" placeholder="Ingrese su nombre completo" value={nombreCompleto} onChange={(e) => setNombreCompleto(e.target.value)} />
+                    </div>
+                    <div className='mb-3'>
+                        <label className='labelsignup'>Contraseña</label>
+                    </div>
+                    <div className='mb-3'>
+                        <input className='inputsignup' type="password" name="Contrasenia" placeholder="Ingrese su contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
+                    </div>
+                    <div className='mb-3'>
+                        <label className='labelsignup'>Confirmación</label>
+                    </div>
+                    <div className='mb-3'>
+                        <input className='inputsignup' type="password" name="Confirmacion" placeholder="Ingrese la confirmación de contraseña" value={confirmacion} onChange={(e) => setConfirmacion(e.target.value)} />
+                    </div>
+                    <div className='mb-3'>
+                        <button type="submit" className="butonsignup">
+                            Registrarse
+                        </button>
+                    </div>
+                </div>
                 </div>
             </div>
         </div>

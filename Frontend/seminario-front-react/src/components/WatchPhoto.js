@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import NavBar from './MyNavBar2';
-import './Login.css';
+import '../styles/Login.css';
 
 const WatchPhoto = ({ userFoto }) => {
     // Filtrar las fotos por álbumes

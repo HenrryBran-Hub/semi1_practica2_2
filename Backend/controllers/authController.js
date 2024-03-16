@@ -4,7 +4,7 @@ const jwt = require('jsonwebtoken');
 const { serialize } = require('cookie');
 const fs = require('fs');
 const path = require('path');
-const bcrypt = require('bcrypt');
+const md5 = require('md5');
 
 exports.signup = async (req, res) => {
     try {
@@ -72,29 +72,29 @@ exports.login = async (req, res) => {
             return res.status(500).json({ message: "Credenciales inválidas" });
         }
         // Compara las contraseñas
-        bcrypt.compare(contrasena, user.contrasena, (err, result) => {
-            if (err) {
-                res.status(500).json({ status: 500, message: err });
-                // Maneja el error apropiadamente
-                return;
-            }
-            if (result) {
-                // Creamos nuestro jwt
-                const claveSecreta = process.env.JWT_KEY_SECRET_TOKEN;
-                const token = jwt.sign({ 
-                    exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 *30,
-                    id: user.id }, 
-                    claveSecreta);
+        if (compareMD5Values(value1, value2)) {
+            // Creamos nuestro jwt
+            const claveSecreta = process.env.JWT_KEY_SECRET_TOKEN;
+            const token = jwt.sign({ 
+                exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24 *30,
+                id: user.id }, 
+                claveSecreta);
 
-                res.status(200).json({ status: 200, message: "Inicio de sesión exitoso", token: token });
-                // Aquí puedes generar un token JWT o realizar otras acciones
-            } else {
-                res.status(500).json({ status: 500, message: "Error interno del servidor" });
+            res.status(200).json({ status: 200, message: "Inicio de sesión exitoso", token: token });
+            // Aquí puedes generar un token JWT o realizar otras acciones
+          } else {
+            res.status(500).json({ status: 500, message: "Error interno del servidor" });
                 // Puedes mostrar un mensaje de error al usuario
-            }
-        });
+          }
     } catch (error) {
         console.error("Error al iniciar sesión:", error);
         res.status(500).json({ status: 500, message: "Error interno del servidor" });
     }
 };
+
+function compareMD5Values(value1, value2) {
+    const hashValue1 = md5(value1);
+    const hashValue2 = md5(value2);
+  
+    return hashValue1 === hashValue2;
+  }

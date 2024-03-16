@@ -1,25 +1,42 @@
 import React, { useState } from 'react';
+import Webcam from 'react-webcam';
 import NavBar from './MyNavBar';
 import imagen from '../img/fauna.png'; // Importa la imagen
-import './Login.css';
+import '../styles/Login.css';
+import md5 from 'md5';
 
 const Login = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [showCamera, setShowCamera] = useState(false);
+
+    const webcamRef = React.useRef(null); // Referencia a la webcam
+
+    const startCamera = () => {
+        setShowCamera(true);
+    };
+
+    const stopCamera = () => {
+        setShowCamera(false);
+    };
+
+    const capturePhoto = () => {
+        const imageSrc = webcamRef.current.getScreenshot();
+        return imageSrc;
+    };
 
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        // Verificar que todos los campos estén llenos
         if (!username || !password) {
             alert('Por favor, llene todos los campos');
             return;
         }
 
-        // Cifra la contraseña antes de enviarla
+        const hashedPassword = md5(password);
         const formData = new FormData();
         formData.append('nombre_usuario', username);
-        formData.append('contrasena', password);
+        formData.append('contrasena', hashedPassword);
 
         try {
             const response = await fetch('http://localhost:5000/signup/login', {
@@ -31,10 +48,31 @@ const Login = () => {
             console.log(token);
             localStorage.setItem('token', token);
             window.location.href = `/userpage`;
-
         } catch (error) {
             console.error('Error en la solicitud:', error);
-            // Recarga la página si hay un error en la solicitud
+            window.location.reload();
+        }
+    };
+
+    const handleSubmitCamera = async () => {
+
+        const photoData = capturePhoto();
+
+        const formData = new FormData();
+        formData.append('photo', photoData);
+
+        try {
+            const response = await fetch('http://localhost:5000/signup/loginfoto', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json();
+            const token = data.token;
+            console.log(token);
+            localStorage.setItem('token', token);
+            window.location.href = `/userpage`;
+        } catch (error) {
+            console.error('Error en la solicitud:', error);
             window.location.reload();
         }
     };
@@ -42,34 +80,54 @@ const Login = () => {
     return (
         <div>
             <NavBar />
-            <div className="containerl">
-                <form onSubmit={handleSubmit} className="border p-3 rounded mr-3 form-containerl">
+            <div  className="containerL" >
+            {!showCamera && (
+                <div onSubmit={handleSubmit} className="contornoL">
                     <div className="image-containerl">
                         <img className='container-imgl' src={imagen} alt="Descripción de la imagen" />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="correo">Usuario:</label>
+                    <label htmlFor="correo" className='labellogin'>Usuario:</label>
+                    <div>
                         <input
-                            className="form-control"
+                            className="inputlogin"
                             id="username"
                             value={username}
                             onChange={(e) => setUsername(e.target.value)}
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Contraseña:</label>
+                    <label htmlFor="password" className='labellogin'>Contraseña:</label>
+                    <div>
                         <input
                             type="password"
-                            className="form-control"
+                            className='inputlogin'
                             id="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+
                         />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="btn btn-primary">Iniciar Sesión</button>
+                        <button type="submit" className="butonlogin">Iniciar Sesión</button>
                     </div>
-                </form>
+                    <div className="form-group">
+                        <button type="button" className="butonlogin" onClick={startCamera}>Inicio de sesión por cámara</button>
+                    </div>
+                </div>
+            )}
+            {showCamera && (
+                    <div className="contornoL">
+                        <Webcam
+                            audio={false}
+                            ref={webcamRef}
+                            screenshotFormat="image/jpeg"
+                            className='webcamstyle'
+                        />
+                        
+                            <button type="button" className="butonlogin" onClick={handleSubmitCamera}>Iniciar Sesión con Foto</button>
+                            <button type="button" className="butonlogin" onClick={stopCamera}>Cancelar</button>
+                       
+                    </div>
+            )}
             </div>
         </div>
     );

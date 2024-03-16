@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from './MyNavBar2';
-import './Login.css';
+import '../styles/Login.css';
 
 const UserPage = ({ userData }) => {
     // Verificar si userData está definido y obtener los valores correspondientes

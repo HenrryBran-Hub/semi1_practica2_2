@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import NavBar from './MyNavBar2';
-import './Signup.css';
+import '../styles/Signup.css';
 
 const EditPerfil = ({ userData }) => {
     const [usuario, setUsuario] = useState('');
