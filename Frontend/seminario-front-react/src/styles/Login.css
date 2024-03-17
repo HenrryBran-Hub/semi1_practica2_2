@@ -1,0 +1,63 @@
+.containerL {
+    align-items: center;
+    margin-top: 2%;
+    margin-left: 25%;   
+    width: 100%;
+}
+
+.contornoL {
+    align-items: center;
+    text-align: center;
+    width: 50%;
+    height: 50%;
+    border: 2px solid #e58908;
+}
+
+.container-imgl{
+    width: 50%;
+    align-items: center;
+    align-items: center;
+}
+
+.image-containerl {
+    text-align: center;
+    margin-bottom: 20px; 
+}
+
+.labellogin {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10 px;
+    text-align: center;
+    margin: 5px 5px 5px 5px;
+}
+
+.inputlogin {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    margin: 5px 5px 5px 5px;
+}
+
+.butonlogin {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    width: 50%;
+    text-align: center;
+    margin: 5px 5px 5px 5px;
+}
+
+.butonlogin:hover {
+    background-color: #e58908;
+}
+
+.webcamstyle{
+    margin: 5px 5px 5px 5px;
+    width: 50%;
+    height: 50%;
+}

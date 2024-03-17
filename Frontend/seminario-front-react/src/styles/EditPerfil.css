@@ -1,0 +1,75 @@
+.containereditperfil {
+    display: flex;
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    text-align: center;
+}
+
+.cuadradoeditperfil {
+    width: 100%;
+    height: 100%;
+}
+
+.contornoeditperfil {
+    width: 99%;
+    height: 99%;
+    border: 2px solid #e58908;
+}
+
+.contornoeditperfildataimage {
+    position: absolute;
+    margin-top: 75px;
+    width: 400px;
+    border: 2px solid #e58908;
+}
+
+.contornoeditperfildata {
+    position: absolute;
+    margin-top: 102px;
+    width: 400px;
+    border: 2px solid #e58908;
+}
+
+
+.image-containereditperfil {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container-imgeditperfil {
+    width: 300px;
+    height: 384px;
+    align-items: center;
+    padding: 10px 20px;
+    margin: -5px 0 10px 10px;
+}
+
+.labelsignupedipperfil {
+    font-size: 16px;
+    font-weight: bold;
+    padding: 10 px;
+    text-align: center;
+}
+
+.inputsignupeditperfil {
+    width: 80%;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+}
+
+.butonsignupeditperfil {
+    padding: 10px 20px;
+    text-decoration: none;
+    color: white;
+    background-color: #007bff;
+    border: none;
+    width: 50%;
+    text-align: center;
+}
+
+.butonsignupeditperfil:hover {
+    background-color: #e58908;
+}

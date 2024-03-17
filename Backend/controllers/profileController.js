@@ -25,7 +25,7 @@ exports.editProfile = async (req, res) => {
         
         // Compara las contraseñas
         const passwordMatch = await new Promise((resolve, reject) => {
-            bcrypt.compare(contrasena, user.contrasena, (err, result) => {
+            compareMD5Values(contrasena, user.contrasena, (err, result) => {
                 if (err) {
                     reject(err);
                 } else {
@@ -122,3 +122,7 @@ exports.getPerfil = async (req, res) => {
         res.status(500).json({ status: 500, message: "Error interno del servidor" });
     }
 };
+
+function compareMD5Values(hashValue1, hashValue2) {
+    return hashValue1 === hashValue2;
+}
