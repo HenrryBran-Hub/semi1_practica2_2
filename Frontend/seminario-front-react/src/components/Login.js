@@ -21,8 +21,7 @@ const Login = () => {
     };
 
     const capturePhoto = () => {
-        const imageSrc = webcamRef.current.getScreenshot({ mimeType: 'image/png' });
-        console.log(imageSrc);
+        const imageSrc = webcamRef.current.getScreenshot();
         return imageSrc;
     };
 
