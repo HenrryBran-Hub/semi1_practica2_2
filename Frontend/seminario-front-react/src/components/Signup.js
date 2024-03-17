@@ -69,58 +69,58 @@ const Signup = () => {
     return (
         <div>
             <NavBar />
-            <div className='containerS' onSubmit={handleSubmit}>
-                <div  className='cuadrado'>
-                <div className='contorno'>
-                <div className='labelsignup'>
-                    <label htmlFor="imagen">Imagen</label>
-                    </div>
-                    <input
-                        type="file"
-                        id="imagen"
-                        accept="image/*"
-                        onChange={handleImagenChange}
-                        className='mb-3'
-                    />
-                    {imagen && (
-                        <img src={imagen} alt="Imagen seleccionada" className="container-imgS" />
-                    )}
+            <form className='containerS' onSubmit={handleSubmit}>
+                <div className='cuadrado'>
+                    <div className='contorno'>
+                        <div className='labelsignup'>
+                            <label htmlFor="imagen">Imagen</label>
+                        </div>
+                        <input
+                            type="file"
+                            id="imagen"
+                            accept="image/*"
+                            onChange={handleImagenChange}
+                            className='labelsignup'
+                        />
+                        {imagen && (
+                            <img src={imagen} alt="Imagen seleccionada" className="container-imgS" />
+                        )}
                     </div>
                 </div>
                 <div className='cuadrado'>
-                <div className='contorno'>
-                    <div className='mb-3'>
-                        <label className='labelsignup'>Usuario</label>
-                    </div>
-                    <div className='mb-3'>
-                        <input className='inputsignup' type="text" name="Usuario" placeholder="Ingrese nombre de usuario" value={usuario} onChange={(e) => setUsuario(e.target.value)} />
-                    </div>
-                    <div className='mb-3'>
-                        <label className='labelsignup'>Nombre Completo</label>
-                    </div>
-                    <div className='mb-3'>
-                        <input className='inputsignup' type="text" name="NombreCompleto" placeholder="Ingrese su nombre completo" value={nombreCompleto} onChange={(e) => setNombreCompleto(e.target.value)} />
-                    </div>
-                    <div className='mb-3'>
-                        <label className='labelsignup'>Contraseña</label>
-                    </div>
-                    <div className='mb-3'>
-                        <input className='inputsignup' type="password" name="Contrasenia" placeholder="Ingrese su contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
-                    </div>
-                    <div className='mb-3'>
-                        <label className='labelsignup'>Confirmación</label>
-                    </div>
-                    <div className='mb-3'>
-                        <input className='inputsignup' type="password" name="Confirmacion" placeholder="Ingrese la confirmación de contraseña" value={confirmacion} onChange={(e) => setConfirmacion(e.target.value)} />
-                    </div>
-                    <div className='mb-3'>
-                        <button type="submit" className="butonsignup">
-                            Registrarse
-                        </button>
+                    <div className='contorno'>
+                        <div className='mb-3'>
+                            <label className='labelsignup'>Usuario</label>
+                        </div>
+                        <div className='mb-3'>
+                            <input className='inputsignup' type="text" name="Usuario" placeholder="Ingrese nombre de usuario" value={usuario} onChange={(e) => setUsuario(e.target.value)} />
+                        </div>
+                        <div className='mb-3'>
+                            <label className='labelsignup'>Nombre Completo</label>
+                        </div>
+                        <div className='mb-3'>
+                            <input className='inputsignup' type="text" name="NombreCompleto" placeholder="Ingrese su nombre completo" value={nombreCompleto} onChange={(e) => setNombreCompleto(e.target.value)} />
+                        </div>
+                        <div className='mb-3'>
+                            <label className='labelsignup'>Contraseña</label>
+                        </div>
+                        <div className='mb-3'>
+                            <input className='inputsignup' type="password" name="Contrasenia" placeholder="Ingrese su contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
+                        </div>
+                        <div className='mb-3'>
+                            <label className='labelsignup'>Confirmación</label>
+                        </div>
+                        <div className='mb-3'>
+                            <input className='inputsignup' type="password" name="Confirmacion" placeholder="Ingrese la confirmación de contraseña" value={confirmacion} onChange={(e) => setConfirmacion(e.target.value)} />
+                        </div>
+                        <div className='mb-3'>
+                            <button type="submit" className="butonsignup">
+                                Registrarse
+                            </button>
+                        </div>
                     </div>
                 </div>
-                </div>
-            </div>
+            </form>
         </div>
     );
 }

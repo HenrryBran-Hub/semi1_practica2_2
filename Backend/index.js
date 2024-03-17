@@ -2,14 +2,16 @@ const express = require('express');
 const app = express();
 const cors = require('cors');
 const dotenv = require('dotenv');
+const morgan = require('morgan'); // Agrega esta línea
 dotenv.config();
-
 
 const PORT = 5000;
 app.set(PORT)
 app.use(express.json());
 app.use(cors());
 
+// Agrega morgan como middleware de registro
+app.use(morgan('dev'));
 
 // Importa las rutas
 const authRoutes = require('./routes/authRoutes');

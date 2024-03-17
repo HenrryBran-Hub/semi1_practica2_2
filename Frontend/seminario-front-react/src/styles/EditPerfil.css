@@ -1,4 +1,4 @@
-.containerS {
+.containereditperfil {
     display: flex;
     margin-top: 2%;
     margin-left: 10%;
@@ -6,23 +6,38 @@
     text-align: center;
 }
 
-.cuadrado {
+.cuadradoeditperfil {
     width: 100%;
     height: 100%;
 }
 
-.contorno {
+.contornoeditperfil {
     width: 99%;
     height: 99%;
     border: 2px solid #e58908;
 }
 
-.image-containerS {
+.contornoeditperfildataimage {
+    position: absolute;
+    margin-top: 75px;
+    width: 400px;
+    border: 2px solid #e58908;
+}
+
+.contornoeditperfildata {
+    position: absolute;
+    margin-top: 102px;
+    width: 400px;
+    border: 2px solid #e58908;
+}
+
+
+.image-containereditperfil {
     text-align: center;
     margin-bottom: 20px;
 }
 
-.container-imgS {
+.container-imgeditperfil {
     width: 300px;
     height: 384px;
     align-items: center;
@@ -30,14 +45,14 @@
     margin: -5px 0 10px 10px;
 }
 
-.labelsignup {
+.labelsignupedipperfil {
     font-size: 16px;
     font-weight: bold;
     padding: 10 px;
     text-align: center;
 }
 
-.inputsignup {
+.inputsignupeditperfil {
     width: 80%;
     padding: 10px;
     font-size: 16px;
@@ -45,7 +60,7 @@
     text-align: center;
 }
 
-.butonsignup {
+.butonsignupeditperfil {
     padding: 10px 20px;
     text-decoration: none;
     color: white;
@@ -55,6 +70,6 @@
     text-align: center;
 }
 
-.butonsignup:hover {
+.butonsignupeditperfil:hover {
     background-color: #e58908;
 }

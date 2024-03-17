@@ -164,3 +164,13 @@ exports.updateUserName = async (id, nombre_usuario) => {
         throw error;
     }
 };
+
+// Función para obtner todos los datos de usuario
+exports.getUserGeneral = async() => {
+    try {
+        const [results, fields] = await db.execute('SELECT * FROM Usuario');
+        return results;
+    } catch (error) {
+        throw error;
+    }
+}
