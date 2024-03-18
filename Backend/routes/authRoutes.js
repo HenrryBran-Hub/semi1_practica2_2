@@ -15,8 +15,13 @@ const upload = multer({
     storage: disktorage
 }).single('foto_perfil')
 
+const upload2 = multer();
+
 router.post('/signup', upload, authController.signup);
 router.post('/login', upload, authController.login);
 router.post('/loginfoto', upload, authController.loginFoto);
+router.get('/descriptionuser', upload2.none(), authController.getPerfilDescription);
+router.post('/descriptiongeneral', upload2.none(), authController.getDescriptionGeneral);
+
 
 module.exports = router;

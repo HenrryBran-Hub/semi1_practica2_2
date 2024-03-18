@@ -8,6 +8,7 @@ const md5 = require('md5');
 const axios = require('axios');
 const { Base64 } = require('js-base64');
 const s3 = require("../database/s3config");
+const { verify } = require('jsonwebtoken');
 
 
 exports.signup = async (req, res) => {
@@ -124,9 +125,9 @@ exports.loginFoto = async (req, res) => {
             if (similitud >= 90) {
                 authenticated = true;
                 userId = user.id;
-                break; 
-            }            
-        }        
+                break;
+            }
+        }
 
         if (authenticated) {
             // Creamos nuestro jwt
@@ -157,12 +158,12 @@ async function getBase64(url) {
 async function compararImagenes(imagen1Base64, imagen2Base64) {
 
     const params = {
-        SimilarityThreshold: 90, 
+        SimilarityThreshold: 90,
         SourceImage: {
-            Bytes: Buffer.from(imagen1Base64, 'base64') 
+            Bytes: Buffer.from(imagen1Base64, 'base64')
         },
         TargetImage: {
-            Bytes: Buffer.from(imagen2Base64, 'base64') 
+            Bytes: Buffer.from(imagen2Base64, 'base64')
         }
     };
 
@@ -178,3 +179,75 @@ async function compararImagenes(imagen1Base64, imagen2Base64) {
         throw error;
     }
 }
+
+//Funcion para obtener los datos del perfil
+exports.getPerfilDescription = async (req, res) => {
+    // Obtener el ID del parámetro de consulta
+    const token = req.query.id;
+    console.log(token);
+    const decodedToken = verify(token, process.env.JWT_KEY_SECRET_TOKEN);
+    const id = decodedToken.id;
+
+    try {
+        // Obtener el usuario por nombre de usuario
+        const user = await userModel.getPerfilData(id);
+        if (!user) {
+            res.status(500).json({ status: 500, message: "Error en la petición" });
+        } else {
+            const salida = await getBase64(user.foto_perfil);
+            const descripcion = await analizarImagenEnRekognition(salida);
+            res.status(200).json(descripcion);
+        }
+    } catch (error) {
+        console.error("Error al tomar los datos de usuario:", error);
+        res.status(500).json({ status: 500, message: "Error interno del servidor" });
+    }
+};
+
+
+async function analizarImagenEnRekognition(base64Image) {
+    const params = {
+        Image: {
+            Bytes: Buffer.from(base64Image, 'base64')
+        },
+        MaxLabels: 30,
+        MinConfidence: 50
+    };
+
+    try {
+        const response = await rekognition.detectLabels(params).promise();
+
+        // Crear un array para almacenar los datos de cada etiqueta
+        let labelsData = [];
+
+        // Iterar sobre cada etiqueta en la respuesta y crear un objeto JSON para cada una
+        response.Labels.forEach((label, index) => {
+            let labelData = {
+                nombre: label.Name,
+                confianza: Math.round(label.Confidence)
+            };
+            labelsData.push(labelData);
+        });
+
+        // Retornar el array de objetos JSON
+        return labelsData;
+    } catch (error) {
+        console.log(error);
+        return "No se pudo analizar la imagen.";
+    }
+}
+
+exports.getDescriptionGeneral = async (req, res) => {
+    // Obtener el ID del parámetro de consulta
+    const imagen = req.body.base64Image;
+
+    try {
+
+        const descripcion = await analizarImagenEnRekognition(imagen);
+        res.status(200).json(descripcion);
+
+    } catch (error) {
+        console.error("Error al tomar los datos de usuario:", error);
+        res.status(500).json({ status: 500, message: "Error interno del servidor" });
+    }
+};

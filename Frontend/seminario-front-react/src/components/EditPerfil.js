@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NavBar from './MyNavBar2';
 import '../styles/EditPerfil.css';
+import md5 from 'md5';
 
 const EditPerfil = ({ userData }) => {
     const [usuario, setUsuario] = useState('');
@@ -26,29 +27,34 @@ const EditPerfil = ({ userData }) => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
+        const hashedPassword = md5(contrasena);
         const formData = new FormData();
         const Token = localStorage.getItem("token")
         formData.append('nombre_usuario', usuario);
         formData.append('nombre_completo', nombreCompleto);
-        formData.append('contrasena', contrasena);
+        formData.append('contrasena', hashedPassword);
         formData.append('token', Token);
         formData.append('foto_perfil', imagenObject);
 
         try {
 
+            console.log("mande el put");
+
             const response = await fetch('http://localhost:5000/editperfil/editperfil', {
                 method: 'PUT',
                 body: formData,
             });
+            
+        
 
             const data = await response.json();
             if (response.status === 200) {
                 // Redirigir a la página de inicio
-                alert("Registro exitoso:", data.message);
+                alert("Actualizacion exitosa ", data.message);
                 window.location.reload();
             } else {
                 // Recargar la página
-                alert("Error en el registro :", data.message);
+                alert("Error al actualizar", data.message);
                 window.location.reload();
             }
         } catch (error) {
@@ -61,7 +67,7 @@ const EditPerfil = ({ userData }) => {
     return (
         <div>
             <NavBar />
-            <form className="containereditperfil" onSubmit={handleSubmit} >
+            <div className="containereditperfil">
                 <div className="cuadradoeditperfil">
                     <div className="contornoeditperfil">
                         <h1 className='titulo'>Edicion de Perfil</h1>
@@ -78,6 +84,7 @@ const EditPerfil = ({ userData }) => {
                     </div>
                 </div>
                 <div className="cuadradoeditperfil">
+                <form onSubmit={handleSubmit}>
                     <div className="contornoeditperfildataimage">
                         <div>
                             <label className="labelsignupedipperfil">Imagen</label>
@@ -94,9 +101,11 @@ const EditPerfil = ({ userData }) => {
                             <img src={imagen} alt="Imagen seleccionada" className="container-imgeditperfil" />
                         )}
                     </div>
+                    </form>
                 </div>
                 <div className="cuadradoeditperfil">
-                    <div className="contornoeditperfildata">
+                <form onSubmit={handleSubmit}>
+                    <div className="contornoeditperfildata" >
                         <div className='mb-3'>
                             <label className="labelsignupedipperfil">Usuario:</label>
                         </div>
@@ -116,13 +125,15 @@ const EditPerfil = ({ userData }) => {
                             <input className="inputsignupeditperfil" type="password" name="contrasena" placeholder="Ingrese la confirmación de contraseña" value={contrasena} onChange={(e) => setContrasena(e.target.value)} />
                         </div>
                         <div className='mb-3'>
-                            <button type="submit" className="butonsignupeditperfil">
+                        
+                            <button type="submit" className="butonsignupeditperfil" onClick={handleSubmit}>
                                 Editar
                             </button>
                         </div>
                     </div>
+                    </form>
                 </div>
-            </form>
+            </div>
         </div>
     );
 }
