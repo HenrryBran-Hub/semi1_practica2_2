@@ -2,7 +2,6 @@ const userModel = require('../models/userModel');
 const { verify } = require('jsonwebtoken');
 const path = require('path');
 const { uploadFileToS3 } = require('../s3Upload/uploadFileToS3');
-const bcrypt = require('bcrypt');
 
 
 exports.editProfile = async (req, res) => {
