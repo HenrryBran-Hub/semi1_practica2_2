@@ -23,17 +23,7 @@ exports.editProfile = async (req, res) => {
         }
         
         // Compara las contraseñas
-        const passwordMatch = await new Promise((resolve, reject) => {
-            compareMD5Values(contrasena, user.contrasena, (err, result) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(result);
-                }
-            });
-        });
-
-        if (passwordMatch) {
+        if (compareMD5Values(contrasena, user.contrasena)) {
             // Verificamos si cambió la imagen 
             if (foto_perfil != null) {
                 const fotoPerfilUrl = await uploadFileToS3(foto_perfil, 'Fotos_Perfil/');
@@ -109,6 +99,7 @@ exports.getPerfil = async (req, res) => {
     const token = req.query.id;
     const decodedToken = verify(token, process.env.JWT_KEY_SECRET_TOKEN);
     const id = decodedToken.id;
+    
     try {
         // Obtener el usuario por nombre de usuario
         const user = await userModel.getPerfilData(id);

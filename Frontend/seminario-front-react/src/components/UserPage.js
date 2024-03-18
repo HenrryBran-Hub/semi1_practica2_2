@@ -76,6 +76,7 @@ const UserPage = ({ userData, userDescripcion }) => {
                 window.location.reload();
             }
         } catch (error) {
+            alert("Error en la solicitud");
             console.error('Error en la solicitud:', error);
             window.location.reload();
         }
