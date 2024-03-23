@@ -11,6 +11,7 @@ import LoadPhoto from "./components/LoadPhoto";
 import WatchPhoto from "./components/WatchPhoto";
 import EditAlbum from "./components/EditAlbum";
 import PrivateRoute from './auth/PrivateRoute';
+import PhotoDescription from './components/PhotoDescription';
 import './App.css';
 
 function App() {
@@ -107,6 +108,7 @@ function App() {
         <Route path='/loadphoto' element={<PrivateRoute><LoadPhoto userData={userData} albumData={albumData}/></PrivateRoute>} />
         <Route path='/watchphoto' element={<PrivateRoute><WatchPhoto  userFoto={albumDataFoto}/></PrivateRoute>} />
         <Route path='/editalbum' element={<PrivateRoute><EditAlbum userData={userData} albumData={albumData} /></PrivateRoute>} />
+        <Route path='/photo_descripcion/:id' element={<PrivateRoute><PhotoDescription userData={userData}/></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   );

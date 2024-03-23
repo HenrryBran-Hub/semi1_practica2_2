@@ -58,7 +58,7 @@ exports.signup = async (req, res) => {
             res.status(500).json({ message: "Error interno del servidor en el registro" });
         }
 
-        res.status(200).json({ message: 'Exito al ingresar los datos usuario registrado' });
+        return res.status(200).json({ message: 'Exito al ingresar los datos usuario registrado' });
 
     } catch (error) {
         console.error("Error al registrar usuario:", error);
@@ -89,13 +89,13 @@ exports.login = async (req, res) => {
 
             console.log(token);
 
-            res.status(200).json({ status: 200, message: "Inicio de sesión exitoso por contraseña", token: token });
+            return res.status(200).json({ status: 200, message: "Inicio de sesión exitoso por contraseña", token: token });
         } else {
-            res.status(500).json({ status: 500, message: "Error interno del servidor por contraseña" });
+            return res.status(500).json({ status: 500, message: "Error interno del servidor por contraseña" });
         }
     } catch (error) {
         console.error("Error al iniciar sesión por contraseña:", error);
-        res.status(500).json({ status: 500, message: "Error interno del servidor por contraseña" });
+        return res.status(500).json({ status: 500, message: "Error interno del servidor por contraseña" });
     }
 };
 
