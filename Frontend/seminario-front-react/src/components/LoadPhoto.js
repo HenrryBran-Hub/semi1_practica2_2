@@ -10,6 +10,7 @@ const LoadPhoto = ({ userData, albumData }) => {
     const [imagen, setImagen] = useState(null);
     const [categoria, setCategoria] = useState('');
     const [nombre, setNombre] = useState('');
+    //const [descripcion, setDescripcion] = useState('');
     const [imagenobject, setImagenObject] = useState (null);
 
     const handleImagenChange = (event) => {
@@ -28,6 +29,10 @@ const LoadPhoto = ({ userData, albumData }) => {
         setNombre(event.target.value);
     };
 
+    // const handleDescripcionChange = (event) => {
+    //     setDescripcion(event.target.value);
+    // };
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -40,6 +45,7 @@ const LoadPhoto = ({ userData, albumData }) => {
         const Token = localStorage.getItem("token")
         formData.append('nombre_album', categoria);
         formData.append('nombre_foto',nombre);
+        // formData.append('descripcion_foto', descripcion);
         formData.append('Token',Token);        
         formData.append('foto_album', imagenobject);
         
@@ -108,6 +114,10 @@ const LoadPhoto = ({ userData, albumData }) => {
                             <label>Nombre de la Foto</label>
                             <input type="text" name="nombreFoto" value={nombre} onChange={handleNombreChange} placeholder="Ingrese nombre de la foto" />
                         </div>
+                        {/* <div className='mb-3'>
+                            <label>Descripcion</label>
+                            <input type="text" name="descripcionFoto" value={descripcion} onChange={handleDescripcionChange} placeholder="Ingrese descripcion de la foto" />
+                        </div> */}
                         <div className='mb-3'>
                             <label>Categoría</label>
                             <select value={categoria} onChange={handleCategoriaChange}>

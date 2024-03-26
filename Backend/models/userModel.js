@@ -33,8 +33,10 @@ exports.createAlbum = async (nombre_album, id_usuario, estado) => {
 };
 
 // Función para guardar la foto en el nuevo  album que acaba de ser creado
-exports.savePhoto = async (nombre_foto, url_foto, id_album, estado) => {
-    try {
+//exports.savePhoto = async (nombre_foto, descripcion_foto, url_foto, id_album, estado) => {
+    exports.savePhoto = async (nombre_foto, url_foto, id_album, estado) => {
+        try {
+        //const [results, fields] = await db.execute('INSERT INTO Foto (nombre_foto, descripcion, url_foto, id_album, estado) VALUES (?, ?, ?, ?, ?)', [nombre_foto, descripcion_foto, url_foto, id_album, estado]);
         const [results, fields] = await db.execute('INSERT INTO Foto (nombre_foto, url_foto, id_album, estado) VALUES (?, ?, ?, ?)', [nombre_foto, url_foto, id_album, estado]);
         if (results.affectedRows === 1) {
             // Si se insertó correctamente, retornar un estado 200

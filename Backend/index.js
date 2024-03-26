@@ -18,7 +18,7 @@ const authRoutes = require('./routes/authRoutes');
 const profileRoutes = require('./routes/profileRoutes');
 const photoRoutes = require('./routes/photoRoutes');
 const albumRoutes = require('./routes/albumRoutes');
-
+const chatbot = require('./routes/chatbotRoutes');
 // Usa las rutas
 app.use('/signup', authRoutes);
 app.use('/login', authRoutes);
@@ -26,6 +26,7 @@ app.use('/editperfil', profileRoutes);
 app.use('/loadphoto', photoRoutes);
 app.use('/watchphoto', photoRoutes);
 app.use('/editalbum', albumRoutes);
+app.use('/chatbot', chatbot);
 
 app.get('/check', (req, res)=>{
   res.status(200).send('OK');

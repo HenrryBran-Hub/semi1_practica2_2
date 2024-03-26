@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import NavBar from './MyNavBar2';
+// import { Link } from 'react-router-dom';
 import '../styles/Login.css';
 
 const WatchPhoto = ({ userFoto }) => {
@@ -26,6 +27,7 @@ const WatchPhoto = ({ userFoto }) => {
                         <div key={index} className="photo-item">
                             <img src={photo.URL} alt={photo.Foto} className="photo-image" />
                             <p>{photo.Foto}</p>
+                            {/* <Link to={`/photo_descripcion/${photo.Id_foto}`}>Ir a Página Destino</Link> */}
                         </div>
                     ))}
                 </div>
