@@ -22,13 +22,27 @@ exports.checkPhotoExistsInAlbum = async (userId, albumId, name) => {
 
 // Función para obtener todas las fotos de un álbum de usuario
 exports.getPhotosByAlbumId = async (userId) => {
-    try {
+    try {//SELECT Album.nombre_album AS Album, Foto.nombre_foto AS Foto, Foto.url_foto AS URL, Foto.id as Id_foto
         const [results, fields] = await db.execute(`
-            SELECT Album.nombre_album AS Album, Foto.nombre_foto AS Foto, Foto.url_foto AS URL
+        SELECT Album.nombre_album AS Album, Foto.nombre_foto AS Foto, Foto.url_foto AS URL
             FROM Album
             JOIN Foto ON Album.id = Foto.id_album
             WHERE Album.id_usuario = ?;
         `, [userId]);
+        return results; // Retorna todos los álbumes y fotos del usuario
+    } catch (error) {
+        throw error;
+    }
+};
+
+
+exports.getPhotoById = async (id) => {
+    try {
+        const [results, fields] = await db.execute(`
+            SELECT id, nombre_foto, descripcion, url_foto, id_album, estado
+            FROM Foto
+            WHERE id = ?;
+        `, [id]);
         return results; // Retorna todos los álbumes y fotos del usuario
     } catch (error) {
         throw error;

@@ -1,0 +1,77 @@
+.chatbot-popup {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+}
+
+.popup-content {
+    position: relative;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.open-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.close-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.stretch-input {
+    width: 97%;
+    padding: 10px;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: 0;
+}
+
+.myInput {
+    width: 90%;
+    box-sizing: border-box;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+}
+
+.myInput:focus {
+    border: 1px solid #007bff;
+}
+
+.btncolor {
+    background-color: #fff;
+    border: none;
+}
+
+.pes{
+    margin: 0;
+}
+
+.pes2{
+    margin: 0;
+    max-width: 80%;
+}
+
+.botonOpen{
+    border: none;
+    height: 70px;
+    width: 70px;
+    border-radius: 50%;
+}

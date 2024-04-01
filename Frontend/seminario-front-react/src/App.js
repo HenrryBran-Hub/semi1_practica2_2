@@ -11,7 +11,9 @@ import LoadPhoto from "./components/LoadPhoto";
 import WatchPhoto from "./components/WatchPhoto";
 import EditAlbum from "./components/EditAlbum";
 import PrivateRoute from './auth/PrivateRoute';
+import PhotoDescription from './components/PhotoDescription';
 import './App.css';
+import ChatbotPopup from './components/Chatbot';
 
 function App() {
   const [userData, setUserData] = useState(null);
@@ -87,7 +89,7 @@ function App() {
         console.error('Error al obtener los datos del usuario:', error);
       }
     };
-    
+
 
     fetchUserData();
     fetchAlbumData();
@@ -96,19 +98,23 @@ function App() {
   }, []);
 
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<HomePage />} />
-        <Route path='/signup' element={<Signup />} />
-        <Route path='/login' element={<Login />} />
-        {/* Rutas protegidas */}
-        <Route path='/userpage' element={<PrivateRoute><UserPage userData={userData} userDescripcion={descripcionUser} /></PrivateRoute>} />
-        <Route path='/editperfil' element={<PrivateRoute><EditPerfil userData={userData} /></PrivateRoute>} />
-        <Route path='/loadphoto' element={<PrivateRoute><LoadPhoto userData={userData} albumData={albumData}/></PrivateRoute>} />
-        <Route path='/watchphoto' element={<PrivateRoute><WatchPhoto  userFoto={albumDataFoto}/></PrivateRoute>} />
-        <Route path='/editalbum' element={<PrivateRoute><EditAlbum userData={userData} albumData={albumData} /></PrivateRoute>} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<HomePage />} />
+          <Route path='/signup' element={<Signup />} />
+          <Route path='/login' element={<Login />} />
+          {/* Rutas protegidas */}
+          <Route path='/userpage' element={<PrivateRoute><UserPage userData={userData} userDescripcion={descripcionUser} /></PrivateRoute>} />
+          <Route path='/editperfil' element={<PrivateRoute><EditPerfil userData={userData} /></PrivateRoute>} />
+          <Route path='/loadphoto' element={<PrivateRoute><LoadPhoto userData={userData} albumData={albumData} /></PrivateRoute>} />
+          <Route path='/watchphoto' element={<PrivateRoute><WatchPhoto userFoto={albumDataFoto} /></PrivateRoute>} />
+          <Route path='/editalbum' element={<PrivateRoute><EditAlbum userData={userData} albumData={albumData} /></PrivateRoute>} />
+          <Route path='/photo_descripcion/:id' element={<PrivateRoute><PhotoDescription userData={userData} /></PrivateRoute>} />
+        </Routes>
+      </BrowserRouter>
+      <ChatbotPopup />
+    </>
   );
 }
 

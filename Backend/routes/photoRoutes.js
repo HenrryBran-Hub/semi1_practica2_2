@@ -19,5 +19,7 @@ const upload = multer({
 
 router.post('/loadphoto', upload, photoController.loadPhoto);
 router.get('/watchphoto', upload2.none(), photoController.watchPhoto);
+router.get('/getphotobyid', upload2.none(), photoController.getPhotoById);
+router.post('/translate', upload2.none(), photoController.translateDescription);
 
 module.exports = router;
