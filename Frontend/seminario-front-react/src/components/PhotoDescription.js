@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, useParams } from 'react-router-dom';
+import '../styles/PhotoDescription.css';
 
 function PhotoDescription({ userData }) {
   let { id } = useParams();
@@ -51,12 +52,12 @@ function PhotoDescription({ userData }) {
 
   return (
     <div>
-      <div className='container row mt-5'>
-        <div className='col-6'>
-          <div className='d-flex justify-content-center'>
+      <div className='container mt-4'>
+        <div className='row justify-content-center'>
+          <div className='col-6'>
             <img src={foto.url_foto} alt='foto' className='rounded mb-5' />
           </div>
-          <div className='d-flex justify-content-center'>
+          <div className='col-6'>
             <NavLink to="/watchphoto" className="btn btn-success"> Regresar a ver fotos </NavLink>
           </div>
         </div>
