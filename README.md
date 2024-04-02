@@ -6,7 +6,7 @@
 
 ### SEMINARIO 1 GRUPO 14
 
-## CREACION PRACTICA NO.1
+## CREACION PRACTICA NO.2
 
 ### Enunciado :point_left:
 
@@ -16,53 +16,45 @@
 
 1. ### :fire: instacias creadas :fire:
 
-   ![1](./Img/1.png)
+   ![1](./Img/instancia_ec2.png)
 
 ---
 
 2. ### permisos de grupo de seguridad (entrada) :eyes:
 
-     ![2](./Img/2.png)
+     ![2](./Img/seguridad_entrada.png)
 ---
 
 3. ### permisos de grupo de seguridad (salida) :eyes:
 
-     ![3](./Img/3.png)
+     ![3](./Img/seguridad_salida.png)
 ---
 
-4. ### detalles de base de datos utilizada
+4. ### detalles de base de datos utilizada con enlaces y puertos
 
-     ![4](./Img/4.png)
+     ![4](./Img/db.png)
 ---
 
-5. ### enlace y puerto de base de datos
-
-     ![5](./Img/5.png)
 ---
 
-6. ### usuarios creados 
+5. ### usuarios creados 
 
-     ![6](./Img/6.png)
+     ![usuario lex](./Img/usuario_lex.png)
+     ![usuario rds](./Img/usuario_rds.png)
+     ![usuario rekognition](./Img/usuario_rekognition.png)
+     ![usuario s3 pagina](./Img/usuario_s3_admin.png)
+     ![usuario s3 imagen](./Img/usuario_s3_img.png)
+     ![usuario translate](./Img/usuario_translate.png)
 ---
 
-7. ### balanceador de carga creado
-
-     ![7](./Img/7.png)
----
-
-8. ### detalles del balanceador de carga
-
-     ![8](./Img/8.png)
----
-
-9. ### grupo de seguridad utilizado :lock:
+6. ### grupo de seguridad utilizado :lock:
 
      ![9](./Img/9.png)
 ---
 
 10. ### bucket de carga de imagenes
 
-     ![10](./Img/10.png)
+     ![10](./Img/bucket_imagenes.png)
 ---
 
 11. ### detalles del bucket
@@ -87,12 +79,12 @@
 
 15. ### entidad relacion logico 
 
-     ![15](./Img/ER_Logical.png)
+     ![15](./Img/Logical.png)
 ---
 
 16. ### entidad relacion relacional
 
-     ![6](./Img/ER_Relational.png)
+     ![6](./Img/Relational_1.png)
 ---
 
 ####  :rotating_light: INTEGRANTES :rotating_light:
