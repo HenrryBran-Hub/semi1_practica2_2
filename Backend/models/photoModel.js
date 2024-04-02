@@ -24,7 +24,7 @@ exports.checkPhotoExistsInAlbum = async (userId, albumId, name) => {
 exports.getPhotosByAlbumId = async (userId) => {
     try {//SELECT Album.nombre_album AS Album, Foto.nombre_foto AS Foto, Foto.url_foto AS URL, Foto.id as Id_foto
         const [results, fields] = await db.execute(`
-        SELECT Album.nombre_album AS Album, Foto.nombre_foto AS Foto, Foto.url_foto AS URL
+        SELECT Album.nombre_album AS Album, Foto.nombre_foto AS Foto, Foto.url_foto AS URL, Foto.id as Id_foto
             FROM Album
             JOIN Foto ON Album.id = Foto.id_album
             WHERE Album.id_usuario = ?;

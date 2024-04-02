@@ -11,7 +11,6 @@ let albumId=null;
 exports.loadPhoto = async (req, res) => {
     try {
         const nombre_foto = req.body.nombre_foto;
-        const nombre_album = req.body.nombre_album;
         const descripcion_foto = req.body.descripcion_foto;
         const foto_album = req.file && req.file.filename ? path.join(__dirname, '../images/' + req.file.filename) : null;
         const token = req.body.Token;

@@ -36,10 +36,12 @@ const botAws = async (mensajeUsuario, token) => {
             botAliasId: 'ZOVG3TC6ST', // Reemplaza 'ID_DEL_ALIAS' con el ID del alias
             botId: 'ZGMY9G2V5M', // Reemplaza 'ID_DEL_BOT' con el ID del bot
             localeId: 'es_419', // Reemplaza 'es_US' con el código de idioma correspondiente
-            sessionId: id, // Proporciona un ID de sesión único
+            sessionId: id + "semi1p2", // Proporciona un ID de sesión único
             text: mensajeUsuario
         };
 
+        console.log(params);
+        
         return new Promise((resolve, reject) => {
             lexClient.recognizeText(params, (err, data) => {
                 if (err) {
