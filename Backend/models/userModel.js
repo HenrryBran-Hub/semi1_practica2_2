@@ -126,7 +126,7 @@ exports.getAlbumIdByUserIdAndAlbumName = async (userId, albumName) => {
             return { status: 200, message: 'El usuario se guardó correctamente.', id: results[0].id };
         } else {
             // Si no se encontró ningún álbum con el nombre proporcionado para el usuario, lanzar un error
-            throw new Error('No se encontró ningún álbum con el nombre proporcionado para el usuario.');
+            return { status: 404, message: 'no se encontro el album para el usuario'};
         }
     } catch (error) {
         throw error;

@@ -1,0 +1,25 @@
+
+.imagenes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .imagenes img {
+    margin: 5px;
+    max-width: 200px;
+    height: auto;
+    box-shadow:
+    inset 0 -3em 3em rgba(0, 0, 0, 0.1),
+    0 0 0 2px rgb(255, 255, 255),
+    0.3em 0.3em 1em rgba(0, 0, 0, 0.3);
+  }
+
+  .imagenes img:hover{
+    max-width: 225px; 
+    
+  }
+
+  .Albumtitle {
+    color: white;
+    text-shadow: rgb(190, 190, 190) 0 2px;
+  }
