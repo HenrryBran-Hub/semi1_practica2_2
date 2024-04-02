@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS Usuario (
     id INT AUTO_INCREMENT PRIMARY KEY,
     nombre_usuario VARCHAR(50) UNIQUE NOT NULL,
     nombre_completo VARCHAR(100) NOT NULL,
-    contrasena VARCHAR(32) NOT NULL, -- MD5 Hash
+    contrasena VARCHAR(255) NOT NULL, -- MD5 Hash
     foto_perfil VARCHAR(255) NOT NULL
 );
 
@@ -29,5 +29,6 @@ CREATE TABLE IF NOT EXISTS Foto (
     url_foto VARCHAR(255) NOT NULL,
     id_album INT NOT NULL,
     estado BOOL NOT NULL,
+    descripcion VARCHAR(500) NOT NULL,
     FOREIGN KEY (id_album) REFERENCES Album(id) ON DELETE CASCADE
 );

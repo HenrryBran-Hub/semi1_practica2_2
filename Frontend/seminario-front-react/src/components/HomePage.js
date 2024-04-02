@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from './MyNavBar';
-import './HomePage.css';
+import '../styles/HomePage.css';
 import imagen from '../img/fauna.png'; // Importa la imagen
 
 const HomePage = () => {

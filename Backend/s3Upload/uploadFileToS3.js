@@ -14,8 +14,7 @@ const uploadFileToS3 = async (filePath,directorio) => {
       Bucket: process.env.S3_BUCKET_NAME,
       Key: key, // Define un nombre único para el archivo en S3
       Body: fileContent,
-      ContentType: mime.lookup(extension),
-      ACL: "public-read"
+      ContentType: mime.lookup(extension)
     };
     return new Promise((resolve, reject) => {
       s3.upload(params, (err, data) => {
@@ -35,10 +34,10 @@ const uploadFileToS3 = async (filePath,directorio) => {
 function eliminarArchivo(rutaArchivo) {
   fs.unlink(rutaArchivo, (error) => {
     if (error) {
-      console.error('Error al intentar eliminar el archivo:', error);
+      console.error('Error al intentar eliminar el archivo en el registro:', error);
       return;
     }
-    console.log('El archivo ha sido eliminado correctamente.');
+    console.log('El archivo ha sido eliminado correctamente en el registro.');
   });
 }
 

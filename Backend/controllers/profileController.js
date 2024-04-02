@@ -2,7 +2,6 @@ const userModel = require('../models/userModel');
 const { verify } = require('jsonwebtoken');
 const path = require('path');
 const { uploadFileToS3 } = require('../s3Upload/uploadFileToS3');
-const bcrypt = require('bcrypt');
 
 
 exports.editProfile = async (req, res) => {
@@ -24,17 +23,7 @@ exports.editProfile = async (req, res) => {
         }
         
         // Compara las contraseñas
-        const passwordMatch = await new Promise((resolve, reject) => {
-            bcrypt.compare(contrasena, user.contrasena, (err, result) => {
-                if (err) {
-                    reject(err);
-                } else {
-                    resolve(result);
-                }
-            });
-        });
-
-        if (passwordMatch) {
+        if (compareMD5Values(contrasena, user.contrasena)) {
             // Verificamos si cambió la imagen 
             if (foto_perfil != null) {
                 const fotoPerfilUrl = await uploadFileToS3(foto_perfil, 'Fotos_Perfil/');
@@ -110,6 +99,7 @@ exports.getPerfil = async (req, res) => {
     const token = req.query.id;
     const decodedToken = verify(token, process.env.JWT_KEY_SECRET_TOKEN);
     const id = decodedToken.id;
+    
     try {
         // Obtener el usuario por nombre de usuario
         const user = await userModel.getPerfilData(id);
@@ -122,3 +112,7 @@ exports.getPerfil = async (req, res) => {
         res.status(500).json({ status: 500, message: "Error interno del servidor" });
     }
 };
+
+function compareMD5Values(hashValue1, hashValue2) {
+    return hashValue1 === hashValue2;
+}
