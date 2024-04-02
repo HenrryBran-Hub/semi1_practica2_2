@@ -2,11 +2,20 @@ import React, { Fragment } from 'react';
 import NavBar from './MyNavBar2';
 import { Link } from 'react-router-dom';
 import '../styles/Login.css';
+import './WatchPhoto.css';
+
+function groupByAlbum(array) {
+    return array.reduce((acc, current) => {
+        acc[current.Album] = [...(acc[current.Album] || []), current];
+        return acc;
+    }, {});
+}
 
 const WatchPhoto = ({ userFoto }) => {
     // Filtrar las fotos por álbumes
-    console.log(userFoto)
+    console.log(userFoto);
     const groupedPhotos = {};
+    const albumes = groupByAlbum(userFoto.photos);
     userFoto.photos.forEach((photo) => {
         if (!groupedPhotos[photo.Album]) {
             groupedPhotos[photo.Album] = [];
@@ -43,8 +52,30 @@ const WatchPhoto = ({ userFoto }) => {
         <Fragment>
             <NavBar />
             <div className="containerl">
-                {albumElements}
+                <div className='container mt-8'>
+                    <div className='row justify-content-center'>
+                        <div>
+                            {Object.keys(albumes).map((album, index) => (
+                                <div className='col-10'>
+                                    <div key={index}>
+                                        <h2 className='Albumtitle'>{album}</h2>
+                                        <div className="imagenes">
+                                            {albumes[album].map((foto, fotoIndex) => (
+                                                <><img key={fotoIndex} src={foto.URL} alt={foto.Foto} /><br/><Link className='custom-link' to={`/photo_descripcion/${foto.Id_foto}`}>Ver foto</Link></>
+                                            ))}
+                                        </div>
+
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
+
+                    </div>
+
+                </div>
             </div>
+
+
         </Fragment>
     );
 };

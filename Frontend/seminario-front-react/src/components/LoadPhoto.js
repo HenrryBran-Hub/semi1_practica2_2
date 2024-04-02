@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import NavBar from './MyNavBar2';
 import '../styles/Signup.css';
+import './LoadPhoto.css'
 
 const LoadPhoto = ({ userData, albumData }) => {
     const usuarioperfil = userData ? userData.nombre_usuario : '';
@@ -11,7 +12,7 @@ const LoadPhoto = ({ userData, albumData }) => {
     // const [categoria, setCategoria] = useState('');
     const [nombre, setNombre] = useState('');
     const [descripcion, setDescripcion] = useState('');
-    const [imagenobject, setImagenObject] = useState (null);
+    const [imagenobject, setImagenObject] = useState(null);
 
     const handleImagenChange = (event) => {
         const imagenSeleccionada = event.target.files[0];
@@ -37,17 +38,17 @@ const LoadPhoto = ({ userData, albumData }) => {
         event.preventDefault();
 
         // Aquí puedes realizar acciones con los datos del formulario
-        if ( !imagenobject || !nombre) {
+        if (!imagenobject || !nombre) {
             alert('Por favor, llene todos los campos');
             return;
         }
         const formData = new FormData();
         const Token = localStorage.getItem("token")
-        formData.append('nombre_foto',nombre);
+        formData.append('nombre_foto', nombre);
         formData.append('descripcion_foto', descripcion);
-        formData.append('Token',Token);        
+        formData.append('Token', Token);
         formData.append('foto_album', imagenobject);
-        
+
 
         try {
 
@@ -78,8 +79,8 @@ const LoadPhoto = ({ userData, albumData }) => {
     return (
         <div>
             <NavBar />
-            <div className="containerS">
-                <form className="border p-3 rounded mr-3 form-containerl">
+            <div className="cointainer mt-4">
+                <form className="border p-3 rounded mr-3 row justify-content-center">
                     <h1 className='titulo'>Subir fotos</h1>
                     <div className="image-containerl">
                         <img className='container-imgl' src={imagenperfil} alt="Descripción de la imagen" />
@@ -94,7 +95,7 @@ const LoadPhoto = ({ userData, albumData }) => {
                     </div>
                 </form>
                 <div className="image-containerS">
-                    <form className="border p-3 rounded mr-3 form-containerS">
+                    <form className="border p-3 rounded mr-3 row justify-content-center">
                         <label htmlFor="imagen">Imagen</label>
                         <input
                             type="file"
@@ -108,16 +109,17 @@ const LoadPhoto = ({ userData, albumData }) => {
                     </form>
                 </div>
                 <div>
-                    <form className="border p-3 rounded form-containerS" onSubmit={handleSubmit}>
-                        <div className='mb-3'>
-                            <label>Nombre de la Foto</label>
-                            <input type="text" name="nombreFoto" value={nombre} onChange={handleNombreChange} placeholder="Ingrese nombre de la foto" />
-                        </div>
-                        <div className='mb-3'>
-                            <label>Descripcion</label>
-                            <input type="text" name="descripcionFoto" value={descripcion} onChange={handleDescripcionChange} placeholder="Ingrese descripcion de la foto" />
-                        </div>
-                        {/* <div className='mb-3'>
+                    <form className="border p-3 rounded mr-3 row justify-content-center" onSubmit={handleSubmit}>
+                        <div className='col-6'>
+                            <div className='mb-3'>
+                                <label>Nombre de la Foto</label>
+                                <input type="text" name="nombreFoto" value={nombre} onChange={handleNombreChange} placeholder="Ingrese nombre de la foto" />
+                            </div>
+                            <div className='mb-3'>
+                                <label>Descripcion</label>
+                                <input type="text" name="descripcionFoto" value={descripcion} onChange={handleDescripcionChange} placeholder="Ingrese descripcion de la foto" />
+                            </div>
+                            {/* <div className='mb-3'>
                             <label>Categoría</label>
                             <select value={categoria} onChange={handleCategoriaChange}>
                                 <option value="">Seleccione una categoría</option>
@@ -126,10 +128,11 @@ const LoadPhoto = ({ userData, albumData }) => {
                                 ))}
                             </select>
                         </div> */}
-                        <div className='mb-3'>
-                            <button type="submit" className="btn btn-primary">
-                                Cargar Foto
-                            </button>
+                            <div className='mb-3'>
+                                <button type="submit" className="btn btn-primary">
+                                    Cargar Foto
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>
