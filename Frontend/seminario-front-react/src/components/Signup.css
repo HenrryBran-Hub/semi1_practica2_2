@@ -6,6 +6,7 @@
 }
 
 .form-containerS {
+    margin: 20px;
     max-width: 500px;
 }
 
@@ -18,4 +19,10 @@
     width: 100%;
     align-items: center;
     align-items: center;
+}
+
+.containerL{
+    justify-content: center;
+    align-items: center;
+
 }

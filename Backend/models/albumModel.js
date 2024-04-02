@@ -40,6 +40,16 @@ exports.verifyAlbumNew = async (id_usuario,nombre_album,) => {
     }
 };
 
+//Todos los datos de un album
+exports.verifyAlbumNew = async (id_usuario,nombre_album,) => {
+    try {
+        const [results, fields] = await db.execute('SELECT *FROM Album WHERE id_usuario = ? AND nombre_album = ?', [id_usuario, nombre_album]);
+        return results // Retorna true si se existe el álbum, false si no
+    } catch (error) {
+        throw error;
+    }
+};
+
 // Función para eliminar un álbum
 exports.deleteFotoAlbum = async (id_usuario,nombre_album,) => {
     try {

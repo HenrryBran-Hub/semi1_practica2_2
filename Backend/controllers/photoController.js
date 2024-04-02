@@ -3,36 +3,49 @@ const userModel = require('../models/userModel');
 const { verify } = require('jsonwebtoken');
 const path = require('path');
 const { uploadFileToS3 } = require('../s3Upload/uploadFileToS3');
+const {getTagRekognition} = require('../rekognition/rekognition')
 
+
+let albumId=null;
 exports.loadPhoto = async (req, res) => {
     try {
         const nombre_foto = req.body.nombre_foto;
-        const nombre_album = req.body.nombre_album;
+        //const nombre_album = req.body.nombre_album;
         const foto_album = req.file && req.file.filename ? path.join(__dirname, '../images/' + req.file.filename) : null;
         const token = req.body.Token;
         const decodedToken = verify(token, process.env.JWT_KEY_SECRET_TOKEN);
         const id = decodedToken.id;
-
+        
         console.log(foto_album);
 
         // Verificamos si cambió la imagen 
         if (foto_album != null) {
             const fotoPerfilUrl = await uploadFileToS3(foto_album, 'fotos_publicadas/');
+            //console.log('FOTOOOOOOOOOOOOO --------------------:::',fotoPerfilUrl.key);
+            //const fotoPerfilUrlBucket = fotoPerfilUrl.toString().slice(33);
             if (!fotoPerfilUrl) {
                 return res.status(500).json({ message: "Error al cargar la foto de album a S3" });
             }
 
+            const nombre_album = await getTagRekognition(fotoPerfilUrl.key);
+
             // obtenemos el id del album
-            const albumId = await userModel.getAlbumIdByUserIdAndAlbumName(id, nombre_album);
+            albumId = await userModel.getAlbumIdByUserIdAndAlbumName(id, nombre_album[0].Etiqueta);
+
             if (albumId.status === 200) {
                 console.log('estado del album:', albumId.message);
             } else {
-                console.error('Hubo un problema al guardar la foto:', albumId.message);
-                return res.status(500).json({ message: "Error interno del servidor" });
+                const answerCreacionAlbum = await userModel.createAlbum(nombre_album[0].Etiqueta, id, '1'); // BORRAR
+                if (answerCreacionAlbum.status==200) albumId=answerCreacionAlbum;
+                else{
+                    console.error('Hubo un problema al guardar la foto:', albumId.message);
+                    return res.status(500).json({ message: "Error interno del servidor" });
+
+                }
             }
 
             // Registrar la foto en el album
-            const fotoId = await userModel.savePhoto(nombre_foto, fotoPerfilUrl.Location, albumId.id, '1');
+            const fotoId = await userModel.savePhoto(nombre_foto, fotoPerfilUrl.key, albumId.id, '1'); // DEJAR KEY
             if (fotoId.status === 200) {
                 console.log('estado de la foto:', fotoId.message);
             } else {
